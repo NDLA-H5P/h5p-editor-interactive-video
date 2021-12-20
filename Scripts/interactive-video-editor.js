@@ -14,7 +14,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.NDLAInteractiveVideo = (function 
    */
   function InteractiveVideoEditor(parent, field, params, setValue) {
     var that = this;
-    H5P.DragNBar.FormManager.call(this, parent.parent, {
+    H5P.NDLADragNBar.FormManager.call(this, parent.parent, {
       doneButtonLabel: t('done'),
       deleteButtonLabel: t('remove'),
       expandBreadcrumbButtonLabel: t('expandBreadcrumbButtonLabel'),
@@ -103,7 +103,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.NDLAInteractiveVideo = (function 
     });
   }
 
-  InteractiveVideoEditor.prototype = Object.create(H5P.DragNBar.FormManager.prototype);
+  InteractiveVideoEditor.prototype = Object.create(H5P.NDLADragNBar.FormManager.prototype);
   InteractiveVideoEditor.prototype.constructor = InteractiveVideoEditor;
 
   /**
@@ -235,7 +235,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.NDLAInteractiveVideo = (function 
      * therefore get the first dnb tooltip and copy the current properties
      * to be set for each tooltip.
      */
-    var $base = this.$bar.find('.h5p-dragnbar-tooltip').first();
+    var $base = this.$bar.find('.h5p-dragnbar-tooltip', '.h5p-ndladragnbar-tooltip').first();
 
     var tooltips = this.IV.$container.find('.h5p-interactive-video-tooltip');
     tooltips.each(function () {
@@ -637,7 +637,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.NDLAInteractiveVideo = (function 
     var that = this;
 
     this.libraries = libraries;
-    this.dnb = new H5P.DragNBar(this.getButtons(libraries), this.IV.$videoWrapper, this.IV.$container, {libraries: libraries});
+    this.dnb = new H5P.NDLADragNBar(this.getButtons(libraries), this.IV.$videoWrapper, this.IV.$container, {libraries: libraries});
     this.dnb.overflowThreshold = 15;
 
     /**
@@ -677,7 +677,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.NDLAInteractiveVideo = (function 
         else {
           that.showConfirmationDialog({
             headerText: H5PEditor.t('core', 'pasteError'),
-            dialogText: H5PEditor.t('H5P.DragNBar', 'unableToPaste'),
+            dialogText: H5PEditor.t('H5P.NDLADragNBar', 'unableToPaste'),
             cancelText: ' ',
             confirmText: t('ok'),
           });
@@ -697,7 +697,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.NDLAInteractiveVideo = (function 
         else {
           that.showConfirmationDialog({
             headerText: H5PEditor.t('core', 'pasteError'),
-            dialogText: H5PEditor.t('H5P.DragNBar', 'unableToPaste'),
+            dialogText: H5PEditor.t('H5P.NDLADragNBar', 'unableToPaste'),
             cancelText: ' ',
             confirmText: t('ok'),
           });
@@ -1327,7 +1327,7 @@ H5PEditor.widgets.interactiveVideo = H5PEditor.NDLAInteractiveVideo = (function 
     var self = this;
 
     var sizeNPosition = self.dnb.getElementSizeNPosition($interaction);
-    var updated = H5P.DragNBar.fitElementInside(sizeNPosition);
+    var updated = H5P.NDLADragNBar.fitElementInside(sizeNPosition);
 
     // Set the updated properties
     var style = {};
